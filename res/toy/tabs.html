@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<p>Click the button to get the number of tbody elements in the table.</p>
+
+<table id="myTable">
+  <tbody>
+    <tr>
+      <td>cell 1</td>
+      <td>cell 2</td>
+    </tr>
+  </tbody>
+</table>
+<br> 
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var row=document.createElement('tr')
+  var c1=document.createElement('td')
+  c1.innerHTML="C5"
+  var c2=document.createElement('td')
+  c2.innerHTML="C5"
+  row.appendChild(c1)
+  row.appendChild(c2)
+  var x =document.getElementById("myTable").tBodies;
+  x[0].appendChild(row)
+}
+</script>
+
+</body>
+</html>

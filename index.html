@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Caja</title>
+        <link rel="icon" href="./res/img/letter_E_red-512.png">
+        <link rel="stylesheet" href="./res/styles/normalize.css">
+        <link rel="stylesheet" href="./res/styles/skeleton.css">
+        <link rel="stylesheet" href="./res/styles/pure-min.css">
+        <link rel="stylesheet" href="./res/styles/style.css">
+    </head>
+    <body>
+        <div id="dvInit">
+            <div class="topnav">
+                
+                <a id="aPersonas">Personas</a>
+                <a id="aSubcategorias">Sub Categorias</a>
+                <a id="aReportes">Reportes</a>
+                <a id="aEsconder">Esconder</a>
+              </div>
+            <div id="dvPersonas"class="dvSec">
+                <div class="sidenav">
+                    <a id="aResponsables">Responsables</a>
+                    <a id="aClientes">Clientes</a>
+                    <a id="aProveedores">Proveedores</a>
+                  </div>
+                  
+            </div>
+            <div id="dvSubcategorias"class="dvSec">
+                <div class="sidenav">
+                    <a id="aTipoEgreso">Tipo Egreso</a>
+                    <a id="aTipoProveedor">Tipo Proveedor</a>
+                    <a id="aRubro">Rubros</a>
+                    <a id="aUnidad">Unidad</a>
+                </div>
+            </div>
+            <div id="dvReportes"class="dvSec">
+                <div class="sidenav">
+                    <a id="aEgreso">Egreso</a>
+                    <a id="aIngreso">Ingreso</a>
+                    <a id="aSaldo">Saldo</a>
+                  </div>
+            </div>
+            <div id="mainInit">
+                <div class="pure-g">
+                    <div class="pure-u-5-24 black" id="mainMenu">               
+                        <ul class="pure-menu-list" >
+                            <li class="pure-menu-item" ><a  class="pure-menu-link" id="aFormIngreso" ><h4 >Ingresos</h4></a></li>
+                            <li class="pure-menu-item"><a  class="pure-menu-link" id="aFormEgreso"><h4 >Egresos</h4></a></li>
+                            <li class="pure-menu-item"><a  class="pure-menu-link " id="aRecargar"><h4 >Recargar</h4></a></li>
+                            <li class="pure-menu-item"><a  class="pure-menu-link " id="aBackupear"><h4 >Crear back up</h4></a></li>
+                        </ul>
+                    </div>
+                    <div class="pure-u-19-24">
+                        
+                        <h4>Saldo: <span id="lblSaldo"></span></h4>
+                        
+                        <h5>Ultimos ingresos</h5>
+                        <table id="tblLastIng"class="pure-table">
+                            <thead>
+                                <tr>
+                                    <th>Monto</th>
+                                    <th>Cliente</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <br>
+                        <h5>Ultimos egresos</h5>
+                        <table id="tblLastEg"class="pure-table">
+                            <thead>
+                                <tr>
+                                    <th>Monto</th>
+                                    <th>Proveedor</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+ 
+            </div>
+        </div>
+        <div id="dvMainPersonas">            
+            <div id="navPersonasVolver" class="topnav">
+                <a id="aVolverPersonas">Volver</a>
+            </div>
+            <div id="dvResponsable" class="dvPersona">
+                <div class="pure-g">
+                    <div class="pure-u-5-24">
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a id="aAddResponsable" class="pure-menu-link"><h5>Crear</h5></a></li>
+                            <li class="pure-menu-item"><a id="aModResponsable" class="pure-menu-link "><h5>Modificar</h5></a></li>
+                            <li class="pure-menu-item"><a id="aDelResponsable" class="pure-menu-link"><h5>Eliminar</h5></a></li>
+                        </ul>
+                    </div>
+                    <div class="pure-u-10-24">
+                        <form class="pure-form pure-form-aligned" >
+                            <fieldset>
+                                <legend>Responsables</legend>
+                                <label for="txtResNombre">Nombre</label>
+                                <input type="text" id="txtResNombre"  />
+                                <label for="txtResApellido">Apellido</label>
+                                <input type="text" id="txtResApellido" />
+                                <label for="txtResRol">Rol</label>
+                                <input type="text" id="txtResRol" />
+                                <label for="txtResId">id</label>
+                                <input type="text" id="txtResId" readonly=''/>
+                                <hr>
+                                
+                                <button id="btnFormResponsable" type="submit" class="pure-button pure-button-primary">Guardar</button>
+                                <span>Operacion: <span id="spnFormResponsable"> guardar</span></span>
+                                
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="pure-u-5-24">
+                        <legend>Responsables a elegir</legend>
+                        <table id="tblResponsables" class="pure-table">
+                            <thead>
+                                <tr>
+                                    <td>Nombre</td>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                            </tbody>
+                        </table>
+                    
+                    </div>
+                </div>
+            </div>
+            <div id="dvCliente" class="dvPersona">
+                <div class="pure-g">
+                    <div class="pure-u-5-24">
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a id="aAddCliente" class="pure-menu-link"><h5>Crear</h5></a></li>
+                            <li class="pure-menu-item"><a id="aModCliente" class="pure-menu-link eleBuscarCliente" ><h5>Modificar</h5></a></li>
+                            <li class="pure-menu-item"><a id="aDelCliente" class="pure-menu-link eleBuscarCliente" ><h5>Eliminar</h5></a></li>
+                        </ul>
+                    </div>
+                    <div class="pure-u-19-24">
+                        <form class="pure-form pure-form-aligned" >
+                            <fieldset>
+                                <legend>Clientes</legend>
+                                <label for="txtCliFormApodo">Apodo</label>
+                                <input type="text" id="txtCliFormApodo"  />
+                                <label for="txtCliFormRazonSocial">Razon social</label>
+                                <input type="text" id="txtCliFormRazonSocial" />
+                                <label for="cboCliFormRubro">Rubro</label>
+                                <select id="cboCliFormRubro">
+                                </select>
+                                <label for="txtCliFormId">id</label>
+                                <input type="text" id="txtCliFormId" readonly=''/>
+                                <hr>
+                                
+                                <button id="btnFormCliente" type="submit" class="pure-button pure-button-primary">Guardar</button>
+                                <span>Operacion: <span id="spnFormCliente"> guardar</span></span>
+                                
+                            </fieldset>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="dvProveedor" class="dvPersona">
+                <div class="pure-g">
+                    <div class="pure-u-5-24">
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a id="aAddPro" class="pure-menu-link"><h5>Crear</h5></a></li>
+                            <li class="pure-menu-item"><a id="aModPro" class="pure-menu-link eleBuscarProveedor"><h5>Modificar</h5></a></li>
+                            <li class="pure-menu-item"><a id="aDelPro" class="pure-menu-link eleBuscarProveedor"><h5>Eliminar</h5></a></li>
+                        </ul>
+                    </div>
+                    <div class="pure-u-19-24">
+                        <form class="pure-form pure-form-aligned" >
+                            <fieldset>
+                                <legend>Proveedor</legend>
+                                <label for="txtProFormApodo">Apodo</label>
+                                <input type="text" id="txtProFormApodo"  />
+                                <label for="txtProFormNombre">Nombre</label>
+                                <input type="text" id="txtProFormNombre"  />
+                                <label for="txtProFormApellido">Apellido</label>
+                                <input type="text" id="txtProFormApellido" />
+                                <label for="cboProFormTipo">Tipo</label>
+                                <select id="cboProFormTipo">
+                                </select>
+                                <label for="txtProFormId">id</label>
+                                <input type="text" id="txtProFormId" readonly=''/>
+                                <hr>
+                                
+                                <button id="btnFormPro" type="submit" class="pure-button pure-button-primary">Guardar</button>
+                                <span>Operacion: <span id="spnFormPro"> guardar</span></span>
+                                
+                            </fieldset>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="dvMainSubcategorias">
+            <div id="navSubcategoriasVolver" class="topnav">
+                <a id="aVolverSubcategorias">Volver</a>
+            </div>
+            <div id="dvTipoEgresos" class="dvSubcategorias">
+                <div class="pure-g">
+                    <div class="pure-u-5-24">
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a id="aAddTipoEgreso" class="pure-menu-link"><h5>Crear</h5></a></li>
+                            <li class="pure-menu-item"><a id="aModTipoEgreso" class="pure-menu-link"><h5>Modificar</h5></a></li>
+                            <li class="pure-menu-item"><a id="aDelTipoEgreso" class="pure-menu-link"><h5>Eliminar</h5></a></li>
+                        </ul>
+                    </div>
+                    <div class="pure-u-10-24">
+                        <form class="pure-form pure-form-aligned" >
+                            <fieldset>
+                                <legend>Tipo Egreso</legend>
+                                <label for="txtTEFormNombre">Nombre</label>
+                                <input type="text" id="txtTEFormNombre"  />
+                                <label for="txtTEFormId">id</label>
+                                <input type="text" id="txtTEFormId" readonly=''/>
+                                <hr>
+                                
+                                <button id="btnFormTE" type="submit" class="pure-button pure-button-primary">Guardar</button>
+                                <span>Operacion: <span id="spnFormTE"> guardar</span></span>
+                                
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="pure-u-5-24">
+                        <legend>Tipo Egreso a elegir</legend>
+                        <table id="tblTipoEgresos" class="pure-table">
+                            <thead>
+                                <tr>
+                                    <td>Nombre</td>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="dvTipoProveedores" class="dvSubcategorias">
+                <div class="pure-g">
+                    <div class="pure-u-5-24">
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a id="aAddTipoProveedor" class="pure-menu-link"><h5>Crear</h5></a></li>
+                            <li class="pure-menu-item"><a id="aModTipoProveedor" class="pure-menu-link"><h5>Modificar</h5></a></li>
+                            <li class="pure-menu-item"><a id="aDelTipoProveedor" class="pure-menu-link"><h5>Eliminar</h5></a></li>
+                        </ul>
+                    </div>
+                    <div class="pure-u-10-24">
+                        <form class="pure-form pure-form-aligned" >
+                            <fieldset>
+                                <legend>Tipo Proveedor</legend>
+                                <label for="txtTPFormNombre">Nombre</label>
+                                <input type="text" id="txtTPFormNombre"  />
+                                <label for="txtTPFormId">id</label>
+                                <input type="text" id="txtTPFormId" readonly=''/>
+                                <hr>
+                                
+                                <button id="btnFormTP" type="submit" class="pure-button pure-button-primary">Guardar</button>
+                                <span>Operacion: <span id="spnFormTP"> guardar</span></span>
+                                
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="pure-u-5-24">
+                        <legend>Tipo Proveedor a elegir</legend>
+                        <table id="tblTipoProveedores" class="pure-table">
+                            <thead>
+                                <tr>
+                                    <td>Nombre</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="dvRubros" class="dvSubcategorias">
+                <div class="pure-g">
+                    <div class="pure-u-5-24">
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a id="aAddRubro" class="pure-menu-link"><h5>Crear</h5></a></li>
+                            <li class="pure-menu-item"><a id="aModRubro" class="pure-menu-link"><h5>Modificar</h5></a></li>
+                            <li class="pure-menu-item"><a id="aDelRubro" class="pure-menu-link"><h5>Eliminar</h5></a></li>
+                        </ul>
+                    </div>
+                    <div class="pure-u-10-24">
+                        <form class="pure-form pure-form-aligned" >
+                            <fieldset>
+                                <legend>Rubros</legend>
+                                <label for="txtRubroFormNombre">Nombre</label>
+                                <input type="text" id="txtRubroFormNombre"  />
+                                <label for="txtRubroFormId">id</label>
+                                <input type="text" id="txtRubroFormId" readonly=''/>
+                                <hr>
+                                
+                                <button id="btnFormRubro" type="submit" class="pure-button pure-button-primary">Guardar</button>
+                                <span>Operacion: <span id="spnFormRubro"> guardar</span></span>
+                                
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="pure-u-5-24">
+                        <legend>Rubros a elegir</legend>
+                        <table id="tblRubros" class="pure-table">
+                            <thead>
+                                <tr>
+                                    <td>Nombre</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+ 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="dvUnidades" class="dvSubcategorias">
+                <div class="pure-g">
+                    <div class="pure-u-5-24">
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a id="aAddUni" class="pure-menu-link"><h5>Crear</h5></a></li>
+                            <li class="pure-menu-item"><a id="aModUni" class="pure-menu-link"><h5>Modificar</h5></a></li>
+                            <li class="pure-menu-item"><a id="aDelUni" class="pure-menu-link"><h5>Eliminar</h5></a></li>
+                        </ul>
+                    </div>
+                    <div class="pure-u-14-24">
+                        <form class="pure-form pure-form-aligned" >
+                            <fieldset>
+                                <legend>Unidades</legend>
+                                <label for="txtUniFormNombre">Nombre</label>
+                                <input type="text" id="txtUniFormNombre"  />
+                                <label for="txtUniFormId">id</label>
+                                <input type="text" id="txtUniFormId" readonly=''/>
+                                <hr>
+                                
+                                <button id="btnFormUni" type="submit" class="pure-button pure-button-primary">Guardar</button>
+                                <span>Operacion: <span id="spnFormUni"> guardar</span></span>
+                                
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="pure-u-5-24">
+                        <legend>Unidades a elegir</legend>
+                        <table id="tblUnidades" class="pure-table">
+                            <thead>
+                                <tr>
+                                    <td>Nombre</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dvMainReportes">
+            <div id="navReportes" class="topnav">
+                <a id="aVolverReporte">Volver</a>
+            </div>
+            <div id="dvReporteEgreso" class="dvReportes">
+                <div id="dvFiltrosReporteEgreso">
+                    <div class="">
+                        <fieldset>
+                            <h5>Filtros</h5>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <input type="text" placeholder="Apodo" style="width:85% ;"/>
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-6-24">
+                                    
+                                    <button class="pure-button eleBuscarProveedor">Buscar proveedor</button>
+                                </div>
+                                <div class="pure-u-11-24">
+                                    
+                                </div>
+                            </div>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-2-24">
+                                    <label for="multi-unidad">Sub Categoria</label>
+                                    <select id="multi-unidad">
+                                        <option>todos</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-2-24">
+                                    
+                                    <label for="multi-rubro">Tipo Proveedor</label>
+                                    <select id="multi-rubro" >
+                                        <option>todos</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div class="pure-u-18-24">
+                                    
+                                </div>
+                            </div>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <label for="dtpFechaDesdeRepEg">Desde</label>
+                                    <input type="date" id="dtpFechaDesdeRepEg" />
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-6-24">
+                                    <label for="dtpFechaHastaRepEg">Hasta</label>
+                                    <input type="date" id="dtpFechaHastaRepEg" />
+                                </div>
+                                <div class="pure-u-11-24">
+                                    
+                                </div>                                                                
+                            </div>
+                            <br>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <button  class="pure-button pure-button-primary">Buscar</button>
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <button  class="pure-button pure-button-primary">Guardar en excel</button>
+                                </div>
+                                <div class="pure-u-1-24"></div>
+                                <div class="pure-u-5-24">
+                                    <div class="pagination">
+                                        <a id="aPrevPageRepEg">❮</a>
+                                        <a id="aPageNumberRepEg">1</a>
+                                        <a id="aNextPageRepEg">❯</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-1-24"></div>
+                    <div class="pure-u-23-24">
+                        <table class="pure-table">
+                            <thead>
+                                <tr>
+                                    <td>Monto</td>
+                                    <td>Proveedor</td>
+                                    <td>Sub Categoria</td>
+                                    <td>Fecha</td>
+                                    <td>Observacion</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div id="dvReporteIngreso" class="dvReportes">
+                <div id="dvFiltrosReporteIngreso">
+                    <div class="">
+                        <fieldset>
+                            <h5>Filtros</h5>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <input type="text" placeholder="Apodo" style="width:85% ;"/>
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-6-24">
+                                    
+                                    <button class="pure-button eleBuscarCliente">Buscar cliente</button>
+                                </div>
+                                <div class="pure-u-11-24">
+                                    
+                                </div>
+                            </div>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-2-24">
+                                    <label for="multi-unidad">Unidad</label>
+                                    <select id="multi-unidad">
+                                        <option>todos</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-2-24">
+                                    
+                                    <label for="multi-rubro">Rubro</label>
+                                    <select id="multi-rubro" >
+                                        <option>todos</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div class="pure-u-18-24">
+                                    
+                                </div>
+                            </div>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <label for="dtpFechaDesdeRepIng">Desde</label>
+                                    <input type="date" id="dtpFechaDesdeRepIng" />
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-6-24">
+                                    <label for="dtpFechaHastaRepIng">Hasta</label>
+                                    <input type="date" id="dtpFechaHastaRepIng" />
+                                </div>
+                                <div class="pure-u-11-24">
+                                    
+                                </div>                                                                
+                            </div>
+                            <br>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <button  class="pure-button pure-button-primary">Buscar</button>
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <button  class="pure-button pure-button-primary">Guardar en excel</button>
+                                </div>
+                                <div class="pure-u-1-24"></div>
+                                <div class="pure-u-5-24">
+                                    <div class="pagination">
+                                        <a id="aPrevPageRepIng">❮</a>
+                                        <a id="aPageNumberRepIng">1</a>
+                                        <a id="aNextPageRepIng">❯</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-1-24"></div>
+                    <div class="pure-u-23-24">
+                        <table class="pure-table">
+                            <thead>
+                                <tr>
+                                    <td>Monto</td>
+                                    <td>Cliente</td>
+                                    <td>Nro Factura</td>
+                                    <td>Unidad</td>
+                                    <td>Modo de pago</td>
+                                    <td>Fecha</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div id="dvReporteSaldo" class="dvReportes">
+                <div id="dvFiltrosReporteSaldo">
+                    <div class="">
+                        <fieldset>
+                            <h5>Filtros</h5>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-3-24">
+                                    <label for="multi-rubrp">Rubro(ingreso)</label>
+                                    <select id="multi-rubro">
+                                        <option>todos</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div class="pure-u-3-24">
+                                    
+                                </div>
+                                <div class="pure-u-4-24">
+                                    
+                                    <label for="multi-sub">Sub categoria(egreso)</label>
+                                    <select id="multi-sub" >
+                                        <option>todos</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div class="pure-u-12-24">
+                                    
+                                </div>
+                            </div>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <label for="dtpFechaDesdeRepEg">Desde</label>
+                                    <input type="date" id="dtpFechaDesdeRepEg" />
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-6-24">
+                                    <label for="dtpFechaHastaRepEg">Hasta</label>
+                                    <input type="date" id="dtpFechaHastaRepEg" />
+                                </div>
+                                <div class="pure-u-11-24">
+                                    
+                                </div>                                                                
+                            </div>
+                            <br>
+                            <div class="pure-g">
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <button  class="pure-button pure-button-primary">Buscar</button>
+                                </div>
+                                <div class="pure-u-1-24">
+                                    
+                                </div>
+                                <div class="pure-u-5-24">
+                                    <button  class="pure-button pure-button-primary">Guardar en excel</button>
+                                </div>
+                                <div class="pure-u-1-24"></div>
+                                <div class="pure-u-5-24">
+                                    <div class="pagination">
+                                        <a id="aPrevPageRepSaldo">❮</a>
+                                        <a id="aPageNumberRepSaldo">1</a>
+                                        <a id="aNextPageRepSaldo">❯</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="pure-g">
+                    <div class="pure-u-1-24"></div>
+                    <div class="pure-u-23-24">
+                        <table class="pure-table">
+                            <thead>
+                                <tr>
+                                    <td>Monto</td>
+                                    <td>Cliente/Proveedor</td>
+                                    <td>Unidad</td>
+                                    <td>Fecha</td>
+                                    <td>Categoria</td>
+                                    <td>Ingreso/Egreso</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dvFormIngreso">
+            <div id="navIngresoVolver" class="topnav">
+                <a id="aVolverIngreso">Volver</a>
+            </div>
+            <div class="pure-g" >
+                <div class="pure-u-3-24">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a id="aAddIng" class="pure-menu-link"><h5>Crear</h5></a></li>
+                        <li class="pure-menu-item"><a id="aModIng" class="pure-menu-link eleBuscarIngreso"><h5>Modificar</h5></a></li>
+                        <li class="pure-menu-item"><a id="aDelIng" class="pure-menu-link eleBuscarIngreso"><h5>Eliminar</h5></a></li>
+                    </ul>
+                </div>
+                <div class="pure-u-21-24">
+                    <div class="dv-form pure-form">
+                        <br>
+                        <div class="pure-g">
+                            <div class="pure-u-20-24">
+                                <div class="pure-g">
+                                    <div class="pure-u-1-8">
+                                        <label >Monto</label>
+                                    </div>
+                                    <div class="pure-7-8">
+                                        <input id="txtIngFormMonto" type="text"/>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-3-24">
+                                        <label>Cliente</label>
+                                    </div>
+                                    <div class="pure-u-4-24">
+                                        <input type="number" id="txtIngFormIdCliente" class="fulltxt"/>
+                                    </div>
+                                    <div class="pure-u-1-24"></div>                                    
+                                    <div class="pure-u-1-24">
+                                        <button id="btnIngBuscarIdCliente" class="idButton">...</button>
+                                    </div>
+                                    <div class="pure-u-1-24"></div>
+                                    <div class="pure-u-7-24">
+                                        <input id ="txtIngApodoCliente" type="text" placeholder="apodo" class="fulltxt">
+                                    </div>
+                                    <div class="pure-u-1-24"></div>
+                                    <div class="pure-u-6-24">
+                                        <button id="btnBuscarClienteIngForm" class="eleBuscarCliente"> Buscar clientes</button>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-1-8">
+                                        <label >Numero de factura</label>
+                                    </div>
+                                    <div class="pure-u-7-8">
+                                        <div class="pure-g">
+                                            <div class="pure-u-9-24">
+                                                <input id="txtIngFormPriFact" type="number"class="fulltxt"/>
+                                            </div>
+                                            <div class="pure-u-1-24 spnFact"><span > -- </span></div>
+                                            <div class="pure-u-14-24">
+                                                <input id="txtIngFormSecFact" type="number" class="fulltxt">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-1-2">
+                                        <label for="cboIngFormUnidades" class="fulltxt">Unidad</label>
+                                        <select id="cboIngFormUnidades" >
+                                        </select>
+                                    </div>
+                                    <div class="pure-u-1-2">
+                                        <label for="cboIngFormResponsable" class="fulltxt">Responsable</label>
+                                        <select id="cboIngFormResponsable" >
+                                        </select>
+                                    </div>
+                                </div> 
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-11-24">
+                                        <div class="pure-g">
+                                            <div class="pure-u-1"><label class="fulltxt">Obervaciones</label></div>
+                                        </div>
+                                        <div class="pure-g">
+                                            <textarea  id="txtaIngFormObservacion" cols="50" rows="20"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="pure-u-1-24"></div>
+                                    <div class="pure-u-12-24">
+                                        <div class="pure-g"><div class="pure-u-1"><label>Fecha</label></div></div>
+                                        <div class="pure-g"><div class="pure-u-1"><input id="dptIngFormFecha" type="date"></div></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-1-8">
+                                        <label >Id:</label>
+                                    </div>
+                                    <div class="pure-u-7-8">
+                                        <input type="number" id="txtIngFormId" readonly=''>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-1-4"><label class="fulltxt">Tipo de operacion: <span id="spnFormIng">guardar</span></label></div>
+                                    <div class="pure-u-1-4"><button id="btnFormIng" class="pure-button pure-button-primary"> Guardar</button></div>
+                                    <div class="pure-u-2-4"></div>
+                                </div>
+                                
+                            </div>
+                            <div class="pure-u-4-24">
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dvFormEgreso" >
+            <div id="navEgresoVolver" class="topnav">
+                <a id="aVolverEgreso">Volver</a>
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-3-24">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a id="aAddEg" class="pure-menu-link"><h5>Crear</h5></a></li>
+                        <li class="pure-menu-item"><a id="aModEg" class="pure-menu-link eleBuscarEgreso"><h5>Modificar</h5></a></li>
+                        <li class="pure-menu-item"><a id="aDelEg" class="pure-menu-link eleBuscarEgreso"><h5>Eliminar</h5></a></li>
+                    </ul>
+                </div>
+                <div class="pure-u-21-24">
+                    <div class="dv-form pure-form">
+                        <br>
+                        <div class="pure-g">
+                            <div class="pure-u-20-24">
+                                <div class="pure-g">
+                                    <div class="pure-u-1-8">
+                                        <label >Monto</label>
+                                    </div>
+                                    <div class="pure-u-7-8">
+                                        <input id="txtEgFormMonto" type="text"/>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-3-24">
+                                        <label>Proveedor</label>
+                                    </div>
+                                    <div class="pure-u-4-24">
+                                        <input type="number" id="txtEgFormIdProveedor" class="fulltxt"/>
+                                    </div>
+                                    <div class="pure-u-1-24"></div>                                    
+                                    <div class="pure-u-1-24">
+                                        <button id="btnEgBuscarIdProveedor" class="idButton">...</button>
+                                    </div>
+                                    <div class="pure-u-1-24"></div>
+                                    <div class="pure-u-7-24">
+                                        <input id = "txtEgFormApodoProveedor" type="text" placeholder="apodo" class="fulltxt">
+                                    </div>
+                                    <div class="pure-u-1-24"></div>
+                                    <div class="pure-u-6-24">
+                                        <button id="btnBuscarProveedorEgForm" class="eleBuscarProveedor"> Buscar proveedores</button>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-1-8">
+                                        <label >Numero de factura</label>
+                                    </div>
+                                    <div class="pure-7-8">
+                                        <div class="pure-g">
+                                            <div class="pure-u-9-24">
+                                                <input  id="txtEgFormProFact" type="text"class="fulltxt"/>
+                                            </div>
+                                            <div class="pure-u-1-24 spnFact"><span > -- </span></div>
+                                            <div class="pure-u-14-24">
+                                                <input id="txtEgFormSecFact" type="text" class="fulltxt">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-1-3">
+                                        <label for="cboEgFormUnidades" class="fulltxt">Unidad</label>
+                                        <select id="cboEgFormUnidades" >
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="pure-u-1-3">
+                                        <label for="cboEgFormTE" class="fulltxt">Tipo egreso</label>
+                                        <select id="cboEgFormTE" >
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="pure-u-1-3">
+                                        <label for="cboEgFormResponsables" class="fulltxt">Responsable</label>
+                                        <select id="cboEgFormResponsables" >
+                                            
+                                        </select>
+                                    </div>
+                                </div> 
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-11-24">
+                                        <div class="pure-g">
+                                            <div class="pure-u-1"><label class="fulltxt">Obervaciones</label></div>
+                                        </div>
+                                        <div class="pure-g">
+                                            <textarea id="txtaEgFormObservacion" cols="50" rows="20"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="pure-u-1-24"></div>
+                                    <div class="pure-u-12-24">
+                                        <div class="pure-g"><div class="pure-u-1"><label>Fecha</label></div></div>
+                                        <div class="pure-g"><div class="pure-u-1"><input id="dptEgFormFecha" type="date"></div></div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-1-8">
+                                        <label >Id:</label>
+                                    </div>
+                                    <div class="pure-u-7-8">
+                                        <input type="number" id="txtEgFormId" readonly="">
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="pure-g">
+                                    <div class="pure-u-1-4"><label class="fulltxt">Tipo de operacion: <span id="spnFormEg">guardar</span></label></div>
+                                    <div class="pure-u-1-4"><button id="btnFormEg" class="pure-button pure-button-primary"> Guardar</button></div>
+                                    <div class="pure-u-2-4"></div>
+                                </div>
+                                
+                            </div>
+                            <div class="pure-u-4-24">
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal -->
+        <div id="modalIngresos" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="btnCruzIngreso"class="close">&times;</span>
+                    <h4>Ingresos</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="pure-g">
+                        <div class="pure-u-3-24">
+                            <label>Cliente: </label>
+                        </div>
+                        <div class="pure-u-4-24">
+                            <input type="number" id="txtModalIngIdCliente" class="fulltxt"/>
+                        </div>
+                        <div class="pure-u-1-24"></div>                                    
+                        <div class="pure-u-1-24">
+                            <button id = "btnModalIngBuscarIdCliente" class="btnId">...</button>
+                        </div>
+                        <div class="pure-u-1-24"></div>
+                        <div class="pure-u-7-24">
+                            <input id="txtModalIngApodoCliente" type="text" placeholder="apodo" class="fulltxt">
+                        </div>
+                        <div class="pure-u-1-24"></div>
+                        <div class="pure-u-6-24">
+                            <button  class="eleBuscarCliente"> Buscar clientes</button>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="pure-g">
+                        <div class="pure-u-1-8">
+                            <label >Numero de factura: </label>
+                        </div>
+                        <div class="pure-7-8">
+                            <div class="pure-g">
+                                <div class="pure-u-9-24">
+                                    <input id="dtpModalIngPriFact" type="text"class="fulltxt"/>
+                                </div>
+                                <div class="pure-u-1-24 spnFact"><span> -- </span></div>
+                                <div class="pure-u-14-24">
+                                    <input id="dtpModalIngSecFact" type="text" class="fulltxt">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="pure-g">
+                        <div class="pure-u-5-24">
+                            <label for="dtpModalIngFechaDesde">Desde</label>
+                            <input type="date" id="dtpModalIngFechaDesde" />
+                        </div>
+                        <div class="pure-u-1-24">
+                            
+                        </div>
+                        <div class="pure-u-5-24">
+                            <label for="dtpModalIngFechaHasta">Hasta</label>
+                            <input type="date" id="dtpModalIngFechaHasta" />
+                        </div>
+                        <div class="pure-u-1-24">
+                            
+                        </div>                        
+                        <div class="pure-u-6-24">
+                            <label for="txtModalIngElegido">Ingreso elegido:</label>
+                            <input id="txtModalIngElegido" type="text" readonly=''>
+                        </div>                                                               
+                    </div>
+                    <br>
+                    <div class="pure-g">
+
+                        <div class="pure-u-1-3">
+                            
+                            <button id="btnModalIngBuscarIngreso" class="pure-button"> Buscar Ingreso</button>
+                        </div>
+                        <div class="pure-u-1-3"></div>
+                        <div class="pure-u-1-4">
+                            
+                            <div class="pagination">
+                                <a id="aPrevPageIng">❮</a>
+                                <a id="aPageNumberIng">1</a>
+                                <a id="aNextPageIng">❯</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div >
+                        <table id="tblingresos" class="pure-table pure-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Monto</th>
+                                    <th>Cliente</th>
+                                    <th>Nro Factura</th>
+                                    <th>Observacion</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id="modalEgresos" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="btnCruzEgreso"class="close">&times;</span>
+                    <h4>Egreso</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="pure-g">
+                        <div class="pure-u-3-24">
+                            <label>Proveedor</label>
+                        </div>
+                        <div class="pure-u-4-24">
+                            <input type="number" id="txtEgModalIdProveedor" class="fulltxt"/>
+                        </div>
+                        <div class="pure-u-1-24"></div>                                    
+                        <div class="pure-u-1-24">
+                            <button id="btnEgModalBuscarIdProveedor" class="idButton">...</button>
+                        </div>
+                        <div class="pure-u-1-24"></div>
+                        <div class="pure-u-7-24">
+                            <input type="text" id ="txtEgModalApodoProveedor"placeholder="apodo" class="fulltxt">
+                        </div>
+                        <div class="pure-u-1-24"></div>
+                        <div class="pure-u-6-24">
+                            <button class="eleBuscarProveedor"> Buscar proveedores</button>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="pure-g">
+                        <div class="pure-u-1-8">
+                            <label >Numero de factura: </label>
+                        </div>
+                        <div class="pure-7-8">
+                            <div class="pure-g">
+                                <div class="pure-u-9-24">
+                                    <input id="txtEgModalPriFact" type="text"class="fulltxt"/>
+                                </div>
+                                <div class="pure-u-1-24 spnFact"><span> -- </span></div>
+                                <div class="pure-u-14-24">
+                                    <input id ="txtEgModalSecFact" type="text" class="fulltxt">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="pure-g">
+                        <div class="pure-u-6-24">
+                            <label for="dtpModalEgFechaDesde">Desde</label>
+                            <input type="date" id="dtpModalEgFechaDesde" />
+                        </div>
+                        <div class="pure-u-1-24">
+                            
+                        </div>
+                        <div class="pure-u-6-24">
+                            <label for="dtpModalEgFechaHasta">Hasta</label>
+                            <input type="date" id="dtpModalEgFechaHasta" />
+                        </div>
+                        <div class="pure-u-1-4">
+                            <label for="txtModalEgElegido">Egreso elegido:</label>
+                            <input id="txtModalEgElegido" type="text" readonly=''>
+                        </div>                                                              
+                    </div>
+                    <br>
+                    <div class="pure-g">
+
+                        <div class="pure-u-1-3">
+                            
+                            <button id="btnModalEgBuscarEgreso" class="pure-button"> Buscar Egreso</button>
+                        </div>
+
+                        <div class="pure-u-1-3">
+                        </div>
+                        
+                        <div class="pure-u-1-3">
+                            
+                            <div class="pagination">
+                                <a id="aPrevPageEg">❮</a>
+                                <a id="aPageNumberEg">1</a>
+                                <a id="aNextPageEg">❯</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div >
+                        <table id="tblEgresos"class="pure-table pure-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Monto</th>
+                                    <th>Proveedor</th>
+                                    <th>Tipo Egreso</th>
+                                    <th>Nro Factura</th>
+                                    <th>Observacion</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="modalClientes" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="btnCruzCliente"class="close">&times;</span>
+                    <h4>Clientes</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="pure-g">
+                        <div class="pure-u-1-3">
+                            <label for="txtCliApodo">Apodo: </label>
+                            <input type="text" id="txtCliApodo">
+                        </div>
+                        <div class="pure-u-1-3">
+                            <label for="txtCliRazonSocial">Razon Social: </label>
+                            <input type="text"  id="txtCliRazonSocial">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="pure-g">
+                        <div class="pure-u-1-8">
+                            <label >Rubro: </label>
+                        </div>
+                        <div class="pure-u-1-8">
+                            <select id="cboCliRubro">
+                            </select>
+                        </div>
+                        <div class="pure-u-1-4">
+                            
+                            <button id="btnBuscarClienteModal" class="pure-button"> Buscar cliente</button>
+                        </div>
+                        <div class="pure-u-1-4">
+                            
+                            <div class="pagination">
+                                <a id="aPrevPageCli">❮</a>
+                                <a id="aPageNumberCli">1</a>
+                                <a id="aNextPageCli">❯</a>
+                            </div>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <label for="txtModalCliElegido">Cliente elegido:</label>
+                            <input id="txtModalCliElegido" type="text">
+                        </div>
+                    </div>
+                    <br>
+                    <div >
+                        <table id="tblClientes" class="pure-table pure-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Apodo</th>
+                                    <th>Razon social</th>
+                                    <th>Rubro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <div id="modalProveedores" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="btnCruzProveedor" class="close">&times;</span>
+                    <h4>Proveedores</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="pure-g">
+                        <div class="pure-u-1-3">
+                            <label for="txtProApodo">Apodo: </label>
+                            <input type="text" id="txtProApodo">
+                        </div>
+                        <div class="pure-u-1-3">
+                            <label for="txtProNombre">Nombre: </label>
+                            <input type="text"  id="txtProNombre">
+                        </div>
+                        <div class="pure-u-1-3">
+                            <label for="txtProApellido">Apellido: </label>
+                            <input type="text" id="txtProApellido">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="pure-g">
+                        <div class="pure-u-2-24">
+                            <label >Tipo: </label>
+                        </div>
+                        <div class="pure-u-1-4">
+                            <select id="cboProTipo">
+                            </select>
+                        </div>
+                        <div class="pure-u-1-4">
+                            
+                            <button id="btnBuscarProveedorModel" class="pure-button"> Buscar Proveedor</button>
+                        </div>
+                        <div class="pure-u-1-4">
+                            
+                            <div class="pagination">
+                                <a id="aPrevPagePro">❮</a>
+                                <a id="aPageNumberPro">1</a>
+                                <a id="aNextPagePro">❯</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pure-g">
+                        <div class="pure-u-1-4">
+                            <label for="txtModalProElegido">Proveedor elegido:</label>
+                            <input id="txtModalProElegido" type="text">
+                        </div>
+                    </div>
+                    <br>
+                    <div >
+                        <table id="tblProveedores" class="pure-table pure-table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Apodo</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Tipo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <script src="./res/js/Monitor.js"></script>
+        <script src="./res/js/EgresosMonitor.js"></script>        
+        <script src="./res/js/IngresosMonitor.js"></script>
+        <script src="./res/js/SubCategoriasMonitor.js"></script>
+        <script src="./res/js/ReportesMonitor.js"></script>
+        <script src="./res/js/PersonasMonitor.js"></script>
+        <script src="./res/js/InitMonitor.js"></script>
+        <script src="./res/js/ModalMonitor.js"></script>
+        <script src="./res/js/app.js"></script>
+    </body>
+</html>

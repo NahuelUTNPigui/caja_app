@@ -1,0 +1,16 @@
+{
+  "name": "caja_marcela",
+  "version": "1.0.0",
+  "description": "aplicacion para crear cajas simples",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "nahuel",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^18.2.4",
+    "sequelize": "^6.19.2",
+    "sqlite3": "^5.0.8"
+  }
+}

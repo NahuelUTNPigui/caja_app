@@ -1,0 +1,189 @@
+{
+    "_comments":[
+        "Esta va a ser una muestra de los datos de mentira como para probar la aplicacion",
+        "sin necesitar una base de datos estatica, json->sqlite:memory->app"
+    ],
+    "responsables":[
+        {"nombre":"nahuel","apellido":"nahuel","rol":"lazy","id":1},
+        {"nombre":"gaston","apellido":"gaston","rol":"busy","id":2}
+    ],
+    "rubros":[
+        {"nombre":"AL","id":1},
+        {"nombre":"ESS","id":2},
+        {"nombre":"TSC","id":3},
+        {"nombre":"PRI","id":4}
+    ],
+    "clientes":[
+        {"apodo":"macro","razon_social":"macro SA","rubro":{"nombre":"ESS","id":2},"id":1},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+        {"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2}
+    ],
+    "tipo_proveedores":[
+        {"nombre":"cuenta propista","id":1},
+        {"nombre":"big company","id":2}
+    ],
+    "proveedores":[
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"tita","nombre":"tita","apellido":"tita","tipo":{"nombre":"big company","id":2},"id":2},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+        {"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1}
+    ],
+    "tipo_egresos":[
+        {"nombre":"afip","id":1},
+        {"nombre":"regalo","id":2}
+    ],
+    "unidades":[
+        {"nombre":"marcela","id":1},
+        {"nombre":"ASA","id":2}
+    ],
+    "ingresos":[
+        {
+            "monto":14.5,
+            "cliente":{"apodo":"macro","razon_social":"macro SA","rubro":{"nombre":"ESS","id":2},"id":1},
+            "numero_factura":"1243-443645",
+            "unidad":{"nombre":"marcela","id":1},
+            "responsable":{"nombre":"nahuel","apellido":"nahuel","rol":"lazy","id":1},
+            "observaciones":"nada que decir",
+            "fecha":"2021-05-20",
+            "id":1
+        },
+        {
+            "monto":20.5,
+            "cliente":{"apodo":"pedidos","razon_social":"Pedidos SA","rubro":{"nombre":"AL","id":1},"id":2},
+            "numero_factura":"4321-443645",
+            "unidad":{"nombre":"ASA","id":2},
+            "responsable":{"nombre":"gaston","apellido":"gaston","rol":"busy","id":2},
+            "observaciones":"todo que decir",
+            "fecha":"2022-10-21",
+            "id":2
+        }
+    ],
+    "egresos":[
+        {
+            "monto":14.5,
+            "proveedor":{"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+            "numero_factura":"1243-443645",
+            "unidad":{"nombre":"marcela","id":1},
+            "tipo_egreso":{"nombre":"afip","id":1},
+            "responsable":{"nombre":"nahuel","apellido":"nahuel","rol":"lazy","id":1},
+            "observaciones":"nada que decir",
+            "fecha":"2022-12-20",
+            "id":1
+        },
+        {
+            "monto":14.5,
+            "proveedor":{"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+            "numero_factura":"1243-443645",
+            "unidad":{"nombre":"marcela","id":1},
+            "tipo_egreso":{"nombre":"afip","id":1},
+            "responsable":{"nombre":"nahuel","apellido":"nahuel","rol":"lazy","id":1},
+            "observaciones":"nada que decir",
+            "fecha":"2022-01-07",
+            "id":2
+        },
+        {
+            "monto":14.5,
+            "proveedor":{"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+            "numero_factura":"1243-443645",
+            "unidad":{"nombre":"marcela","id":1},
+            "tipo_egreso":{"nombre":"afip","id":1},
+            "responsable":{"nombre":"nahuel","apellido":"nahuel","rol":"lazy","id":1},
+            "observaciones":"nada que decir",
+            "fecha":"2022-06-13",
+            "id":3
+        },
+        {
+            "monto":14.5,
+            "proveedor":{"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+            "numero_factura":"1243-443645",
+            "unidad":{"nombre":"marcela","id":1},
+            "tipo_egreso":{"nombre":"afip","id":1},
+            "responsable":{"nombre":"nahuel","apellido":"nahuel","rol":"lazy","id":1},
+            "observaciones":"nada que decir",
+            "fecha":"2022-05-10",
+            "id":4
+        },
+        {
+            "monto":14.5,
+            "proveedor":{"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+            "numero_factura":"1243-443645",
+            "unidad":{"nombre":"marcela","id":1},
+            "tipo_egreso":{"nombre":"afip","id":1},
+            "responsable":{"nombre":"nahuel","apellido":"nahuel","rol":"lazy","id":1},
+            "observaciones":"nada que decir",
+            "fecha":"2022-11-01",
+            "id":5
+        },
+        {
+            "monto":14.5,
+            "proveedor":{"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+            "numero_factura":"1243-443645",
+            "unidad":{"nombre":"marcela","id":1},
+            "tipo_egreso":{"nombre":"afip","id":1},
+            "responsable":{"nombre":"nahuel","apellido":"nahuel","rol":"lazy","id":1},
+            "observaciones":"nada que decir",
+            "fecha":"2022-05-02",
+            "id":6
+        },
+        {
+            "monto":14.5,
+            "proveedor":{"apodo":"pepe","nombre":"jose","apellido":"hernandez","tipo":{"nombre":"cuenta propista","id":1},"id":1},
+            "numero_factura":"1243-443645",
+            "unidad":{"nombre":"marcela","id":1},
+            "tipo_egreso":{"nombre":"afip","id":1},
+            "responsable":{"nombre":"nahuel","apellido":"nahuel","rol":"lazy","id":1},
+            "observaciones":"nada que decir",
+            "fecha":"2022-08-22",
+            "id":7
+        }    
+    ]
+}
